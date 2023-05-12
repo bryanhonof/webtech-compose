@@ -10,6 +10,7 @@ To start up the stack, run the following.
 
 ```
 $ git clone git@github.com:bryanhonof/webtech-compose.git
+$ cd webtech-compose
 $ docker compose up
 ```
 
