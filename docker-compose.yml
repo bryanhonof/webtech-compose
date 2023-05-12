@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  webserver:
+    image: "caddy"
+    ports:
+      - "8080:80"
+    volumes:
+      - "$PWD/html:/var/www/html"
+      - "$PWD/Caddyfile:/etc/caddy/Caddyfile"
+    depends_on:
+      - cgi
+      - db
+  cgi:
+    build:
+      context: "backend"
+      dockerfile: "phpWithPgsql.Dockerfile"
+    volumes:
+      - "$PWD/html:/var/www/html"
+    depends_on:
+      - db
+  db:
+    image: "postgres"
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+  adminer:
+    image: adminer
+    ports:
+      - "8888:8080"
+    depends_on:
+      - db
