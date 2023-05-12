@@ -23,3 +23,12 @@ $ curl http://localhost:8080/testdb.sh
 
 You can also go to http://localhost:8080 yourself, and see a greeting 
 appear. This is due to the `/html/index.php` script.
+
+## Exploring the database
+
+There's an extra service running in this stack, that isn't available in 
+the production enviornment, called adminer. Head over to 
+http://localhost:8888 to get an interface to this service.
+
+Adminer is a web frontend for postgres—and other databases—, this is 
+usefull when debugging your application.
