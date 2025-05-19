@@ -1,12 +1,16 @@
 version: "3.9"
 services:
   webserver:
-    image: "caddy"
+    image: "caddy:2-alpine"
     ports:
-      - "8080:80"
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
     volumes:
       - "$PWD/html:/var/www/html"
       - "$PWD/Caddyfile:/etc/caddy/Caddyfile"
+      - caddy_data:/data
+      - caddy_config:/config
     depends_on:
       - cgi
       - db
@@ -19,7 +23,7 @@ services:
     depends_on:
       - db
   db:
-    image: "postgres"
+    image: "postgres:17-alpine"
     environment:
       POSTGRES_PASSWORD: "postgres"
   adminer:
@@ -28,3 +32,6 @@ services:
       - "8888:8080"
     depends_on:
       - db
+volumes:
+  caddy_data:
+  caddy_config:
