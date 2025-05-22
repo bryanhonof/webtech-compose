@@ -1,0 +1,16 @@
+:80 {
+	log {
+		format console
+	}
+
+	root * /var/www/html/public
+	
+	php_fastcgi cgi:9000 {
+		root /var/www/html/public
+		try_files {path} /routes.php =404
+	}
+	
+	handle_errors {
+		respond "{err.status_code} {err.status_text}"
+	}
+}

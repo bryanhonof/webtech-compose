@@ -1,7 +1,0 @@
-:80 {
-	root * /var/www/html
-	php_fastcgi cgi:9000 {
-		root /var/www/html
-	}
-	file_server
-}
