@@ -4,6 +4,8 @@ require_once __DIR__ . '/lib/router.php';
 
 get('/', 'views/index.php');
 
+get('/dashboard', 'views/dashboard.php');
+
 get('/api/db-status', function () {
     require_once __DIR__ . '/lib/lib.php';
     $pdo = $connectToPostgres();
